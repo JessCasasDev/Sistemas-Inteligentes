@@ -58,7 +58,7 @@ public class Discount implements Serializable {
     private Float percentage;
     @JoinColumn(name = "order_order_id", referencedColumnName = "order_id")
     @ManyToOne(optional = false)
-    private Order1 orderOrderId;
+    private Order orderOrderId;
     @JoinColumn(name = "vehicle_id", referencedColumnName = "vehicle_id")
     @ManyToOne(optional = false)
     private Vehicle vehicleId;
@@ -110,11 +110,11 @@ public class Discount implements Serializable {
         this.percentage = percentage;
     }
 
-    public Order1 getOrderOrderId() {
+    public Order getOrderOrderId() {
         return orderOrderId;
     }
 
-    public void setOrderOrderId(Order1 orderOrderId) {
+    public void setOrderOrderId(Order orderOrderId) {
         this.orderOrderId = orderOrderId;
     }
 

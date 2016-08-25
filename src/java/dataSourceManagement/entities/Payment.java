@@ -54,7 +54,7 @@ public class Payment implements Serializable {
     private String debt;
     @JoinColumn(name = "order_order_id", referencedColumnName = "order_id")
     @ManyToOne(optional = false)
-    private Order1 orderOrderId;
+    private Order orderOrderId;
 
     public Payment() {
     }
@@ -95,11 +95,11 @@ public class Payment implements Serializable {
         this.debt = debt;
     }
 
-    public Order1 getOrderOrderId() {
+    public Order getOrderOrderId() {
         return orderOrderId;
     }
 
-    public void setOrderOrderId(Order1 orderOrderId) {
+    public void setOrderOrderId(Order orderOrderId) {
         this.orderOrderId = orderOrderId;
     }
 

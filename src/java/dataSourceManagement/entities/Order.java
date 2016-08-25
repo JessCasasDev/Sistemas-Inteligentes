@@ -39,7 +39,7 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Order1.findByOrderDate", query = "SELECT o FROM Order1 o WHERE o.orderDate = :orderDate"),
     @NamedQuery(name = "Order1.findByDeliveryDate", query = "SELECT o FROM Order1 o WHERE o.deliveryDate = :deliveryDate"),
     @NamedQuery(name = "Order1.findByState", query = "SELECT o FROM Order1 o WHERE o.state = :state")})
-public class Order1 implements Serializable {
+public class Order implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
@@ -66,10 +66,10 @@ public class Order1 implements Serializable {
     @ManyToOne(optional = false)
     private Client clientId;
 
-    public Order1() {
+    public Order() {
     }
 
-    public Order1(Integer orderId) {
+    public Order(Integer orderId) {
         this.orderId = orderId;
     }
 
@@ -150,10 +150,10 @@ public class Order1 implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order1)) {
+        if (!(object instanceof Order)) {
             return false;
         }
-        Order1 other = (Order1) object;
+        Order other = (Order) object;
         if ((this.orderId == null && other.orderId != null) || (this.orderId != null && !this.orderId.equals(other.orderId))) {
             return false;
         }
