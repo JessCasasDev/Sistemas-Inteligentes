@@ -12,6 +12,8 @@ import javax.persistence.Basic;
 import javax.persistence.CascadeType;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
@@ -21,7 +23,6 @@ import javax.persistence.OneToMany;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 import javax.xml.bind.annotation.XmlTransient;
@@ -39,12 +40,12 @@ import javax.xml.bind.annotation.XmlTransient;
     @NamedQuery(name = "Order1.findByOrderDate", query = "SELECT o FROM Order1 o WHERE o.orderDate = :orderDate"),
     @NamedQuery(name = "Order1.findByDeliveryDate", query = "SELECT o FROM Order1 o WHERE o.deliveryDate = :deliveryDate"),
     @NamedQuery(name = "Order1.findByState", query = "SELECT o FROM Order1 o WHERE o.state = :state")})
-public class Order implements Serializable {
+public class Order1 implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "order_id")
     private Integer orderId;
     @Column(name = "order_date")
@@ -59,17 +60,17 @@ public class Order implements Serializable {
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderOrderId")
     private Collection<Discount> discountCollection;
     @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderOrderId")
-    private Collection<StockElement> stockElementCollection;
-    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderOrderId")
     private Collection<Payment> paymentCollection;
+    @OneToMany(cascade = CascadeType.ALL, mappedBy = "orderOrderId")
+    private Collection<StockElement> stockElementCollection;
     @JoinColumn(name = "client_id", referencedColumnName = "client_id")
     @ManyToOne(optional = false)
     private Client clientId;
 
-    public Order() {
+    public Order1() {
     }
 
-    public Order(Integer orderId) {
+    public Order1(Integer orderId) {
         this.orderId = orderId;
     }
 
@@ -115,21 +116,21 @@ public class Order implements Serializable {
     }
 
     @XmlTransient
-    public Collection<StockElement> getStockElementCollection() {
-        return stockElementCollection;
-    }
-
-    public void setStockElementCollection(Collection<StockElement> stockElementCollection) {
-        this.stockElementCollection = stockElementCollection;
-    }
-
-    @XmlTransient
     public Collection<Payment> getPaymentCollection() {
         return paymentCollection;
     }
 
     public void setPaymentCollection(Collection<Payment> paymentCollection) {
         this.paymentCollection = paymentCollection;
+    }
+
+    @XmlTransient
+    public Collection<StockElement> getStockElementCollection() {
+        return stockElementCollection;
+    }
+
+    public void setStockElementCollection(Collection<StockElement> stockElementCollection) {
+        this.stockElementCollection = stockElementCollection;
     }
 
     public Client getClientId() {
@@ -150,10 +151,10 @@ public class Order implements Serializable {
     @Override
     public boolean equals(Object object) {
         // TODO: Warning - this method won't work in the case the id fields are not set
-        if (!(object instanceof Order)) {
+        if (!(object instanceof Order1)) {
             return false;
         }
-        Order other = (Order) object;
+        Order1 other = (Order1) object;
         if ((this.orderId == null && other.orderId != null) || (this.orderId != null && !this.orderId.equals(other.orderId))) {
             return false;
         }

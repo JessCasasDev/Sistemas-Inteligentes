@@ -10,6 +10,8 @@ import java.util.Date;
 import javax.persistence.Basic;
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.Lob;
@@ -19,7 +21,6 @@ import javax.persistence.NamedQuery;
 import javax.persistence.Table;
 import javax.persistence.Temporal;
 import javax.persistence.TemporalType;
-import javax.validation.constraints.NotNull;
 import javax.validation.constraints.Size;
 import javax.xml.bind.annotation.XmlRootElement;
 
@@ -40,8 +41,8 @@ public class Discount implements Serializable {
 
     private static final long serialVersionUID = 1L;
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     @Basic(optional = false)
-    @NotNull
     @Column(name = "discounts_id")
     private Integer discountsId;
     @Column(name = "expiration_date")
@@ -58,7 +59,7 @@ public class Discount implements Serializable {
     private Float percentage;
     @JoinColumn(name = "order_order_id", referencedColumnName = "order_id")
     @ManyToOne(optional = false)
-    private Order orderOrderId;
+    private Order1 orderOrderId;
     @JoinColumn(name = "vehicle_id", referencedColumnName = "vehicle_id")
     @ManyToOne(optional = false)
     private Vehicle vehicleId;
@@ -110,11 +111,11 @@ public class Discount implements Serializable {
         this.percentage = percentage;
     }
 
-    public Order getOrderOrderId() {
+    public Order1 getOrderOrderId() {
         return orderOrderId;
     }
 
-    public void setOrderOrderId(Order orderOrderId) {
+    public void setOrderOrderId(Order1 orderOrderId) {
         this.orderOrderId = orderOrderId;
     }
 

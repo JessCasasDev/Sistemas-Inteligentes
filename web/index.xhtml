@@ -4,15 +4,15 @@
       xmlns:h="http://xmlns.jcp.org/jsf/html">
     <head>
         <link href="http://fonts.googleapis.com/icon?family=Material+Icons" rel="stylesheet"/>
-         <!--Import materialize.css-->
+        <!--Import materialize.css-->
         <link type="text/css" rel="stylesheet" href="css/materialize.min.css"  media="screen,projection"/>
         <meta name="viewport" content="width=device-width, initial-scale=1.0"/>
         <title>Auto Market</title>
         <link href="css/test.css" rel="stylesheet" type="text/css"></link>
     </head>
-    
+
     <body class="light-blue lighten-4">
-             <nav>
+        <nav>
             <div class="nav-wrapper blue darken-4">
                 <a href="index.xhtml" class="brand-logo">Automarket</a>
                 <ul id="nav-mobile" class="right blue darken-4">
@@ -22,12 +22,141 @@
                     <li class="blue-text text-lighten-3"><a href="client/client_profile.xhtml">Prueba ir Perfil Cliente</a></li>
                 </ul>
             </div>
-  </nav>    
-        <center><img src="images/auto.jpg" class="cover_img"></img>
-        <h1>Bienvenido a Automarket</h1></center>
-         <!-- JS FILES-->
-        <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
-        <script type="text/javascript" src="js/materialize.min.js"></script>
+        </nav>
+        <center><h1 class="indigo-text text-darken-4">Bienvenido a Automarket</h1>
+            <img src="images/auto.jpg" class="cover_img"></img></center>
+
+
+
+        <div class="container">
+            <div class="row">
+                <div class="col s6">
+                    <center><div class="row"><h3 class="col s6 indigo-text text-darken-4">Registrarse</h3></div></center>
+
+
+                    <!--Registrar-->
+                    <div class="row s6">
+                        <a class="waves-effect waves-light btn modal-trigger" href="#cliente" style="margin: 0px 10px 40px 80px">Usuario</a>
+                        
+                    </div>
+
+                    <div id="cliente" class="modal"><div class="modal-content">
+                            <div id="cliente"><div>
+                                    <h:form class="col s12">
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input type="text" class="validate" value="#{createClientBean.username}" required="true" requiredMessage="See requere de un nombre de usuario"/>
+                                                <label>Username</label>
+                                            </div>
+                                        </div>
+                                        <div class="row">
+                                            <div class="input-field col s12">
+                                                <input type="password" class="validate" value="#{createClientBean.password}" required="true" requiredMessage="Se requiere de contraseña"/>
+                                                <label>Password</label>
+                                            </div>
+                                        </div>
+                                        <!--<button action="#{createUserBean.createUser(2)}" class="waves-effect waves-light btn modal-trigger left-align" style="margin-bottom: 40px;">Validar</button>-->                                          <div class="row" >
+                                              
+                                              <div class="input-field col s12">
+                                                  <input id="cli_name" type="text" class="validate" value="#{createClientBean.name}"/>
+                                                  <label for="cli_name">Nombre</label>
+                                              </div>
+                                          </div>
+                                          
+                                          <div class="row">
+                                              <div class="input-field col s12">
+                                                  <input  id="cli_nit" type="text" class="validate" value="#{createClientBean.nit}"/>
+                                                  <label for="cli_nit">NIT</label>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <div class="input-field col s12">
+                                                  <input id="cli_address" type="text" class="validate" value="#{createClientBean.address}"/>
+                                                  <label for="cli_address">Dirección</label>
+                                              </div>
+                                          </div>
+                                          <div class="row">
+                                              <button action="#{createClientBean.createClient()}" class="waves-effect waves-light btn modal-trigger left-align" href="#" style="margin-bottom: 40px;">
+                                                  Registrarse</button>
+                                          </div>
+                                    </h:form>
+                                </div>
+                            </div>
+                            <!--Registrar Empleado-->
+                             <div id="empleado" class="modal"><div class="modal-content"><form class="col s12">
+                                         <div class="row">
+                                             <div class="input-field col s12">
+                                                 <input id="em_name" type="text" class="validate" value="#{createEmployeeBean.name}"/>
+                                                 <label for="em_name">Nombre</label>
+                                             </div>
+                                         </div>
+                                         <div class="row">
+                                             <div class="input-field col s12">
+                                                 <input id="em_lastName" type="text" class="validate" value="#{createEmployeeBean.lastName}"/>
+                                                 <label for="em_lastName">Apellido</label>
+                                             </div>
+                                         </div>
+                                         
+                                         <div class="row">
+                                             <div class="input-field col s12">
+                                                 <input id="em_doc" type="number" min="1" class="validate" value="#{createEmployeeBean.documentId}"/>
+                                                 <label for="em_doc">Documento</label>
+                                             </div>
+                                         </div>
+                                         <div class="row">
+                                             <div class="input-field col s12">
+                                                 <input id="em_bday" type="text" class="validate" value="#{createEmployeeBean.bday}"/>
+                                                 <label for="em_bday">Fecha Nacimiento</label>
+                                             </div>
+                                         </div>
+                                         <div class="row">
+                                             <input type="checkbox" name="admin" value="admin" id="is_admin"/> 
+                                             <input class="validate" type="number" id="admin_number" disabled = "disabled" />                                   
+                                         </div>
+                                         <div class="row">
+                                             <a class="waves-effect waves-light btn modal-trigger left-align" href="#" style="margin-bottom: 40px;">Registrarse</a>
+                                         </div>
+                                     </form>
+                                 </div>
+                             </div>
+</div>
+                        </div></div>
+                          <div class="col s6">
+                              
+                              <center><div class="col s12"><h3 class="col s6 indigo-text text-darken-4">Iniciar Sesión</h3></div></center>
+                              <div class="row">
+                                  <form class="col s12">
+                                      <div class="row">
+                                          <div class="input-field col s6">
+                                              <input id="username" type="text" class="validate"/>
+                                                  <label for="first_name">Username</label>
+                                          </div>
+                                          <div class="input-field col s6">
+                                              <input id="password" type="password" class="validate"/>
+                                                  <label for="password">Contraseña</label>
+                                          </div><a class="waves-effect waves-light btn modal-trigger left-align" href="#" style="margin-left:150px;">Iniciar Sesión</a>
+                                      </div>
+                                      <div class="row s12">
+                                          
+                                      </div>
+                                  </form>
+                              </div>
+                    </div>
+                </div>
+            
+        
+        </div>
+
+            <!-- JS FILES-->
+            <script type="text/javascript" src="https://code.jquery.com/jquery-2.1.1.min.js"></script>
+            <script type="text/javascript" src="js/materialize.min.js"></script>
+            <script type="text/javascript" src="js/UF.js"></script>
+
+            <script type="text/javascript">
+                document.getElementById('is_admin').onchange = function () {
+                document.getElementById('admin_number').disabled = !this.checked;
+                };
+            </script>
     </body>
 </html>
 
